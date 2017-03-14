@@ -1,17 +1,9 @@
-import {observable, action, computed,useStrict} from 'mobx';
+import {observable, action, computed, useStrict} from 'mobx';
 
-useStrict(true);
+// useStrict(true);
 
 export default class TodoStore {
-  @observable todos = [
-    {
-      title: "todo标题",
-      done: false,
-    },
-    {
-      title: "已经完成 todo 的标题",
-      done: true,
-    }];
+  @observable todos = [];
 
   @action changeTodoTitle({index, title}) {
     this.todos[index].title = title
@@ -19,5 +11,13 @@ export default class TodoStore {
 
   @computed get unfinishedTodos() {
     return this.todos.filter((todo) => todo.done)
+  }
+
+  @computed get completedTodosCount() {
+    return this.todos.filter((todo) => todo.done === true).length;
+  }
+
+  @action addTodo(task) {
+    this.todos.push({task, done: false});
   }
 }

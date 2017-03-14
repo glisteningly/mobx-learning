@@ -10,6 +10,8 @@ import TodoBox from './TodoBox'
 // const appState = new AppState();
 
 const todoStore = new TodoStore();
+todoStore.addTodo('foo');
+todoStore.addTodo('bar');
 
 // ReactDOM.render(
 //   <App appState={appState}/>,
